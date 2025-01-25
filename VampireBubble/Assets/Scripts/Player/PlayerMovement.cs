@@ -1,8 +1,7 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 5f;
     [SerializeField]  InputActionAsset _inputActions;
@@ -35,7 +34,7 @@ public class PlayerController : MonoBehaviour
     {
         _movement = context.ReadValue<Vector2>();
     }
-
+    
     // Update is called once per frame
     void FixedUpdate()
     {

@@ -4,6 +4,8 @@ using UnityEngine;
 public class EnemyData : ScriptableObject
 {
     public float Health;
+    public float Speed;
     public float Damage;
-    public Sprite Icon;
+    public bool Flying;
+    public Sprite Sprite;
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3122957595222729985}
   - component: {fileID: 4337507016963711692}
   - component: {fileID: -6414532964512188638}
+  - component: {fileID: 85267829870900424}
   m_Layer: 9
   m_Name: P_Enemy
   m_TagString: Enemy
@@ -119,7 +120,7 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -139,4 +140,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 1
   _avoidanceRadius: 1
-  _flying: 0
+--- !u!114 &85267829870900424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881734495232792793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a25ecf5db237ff84b91bda2f04d8ce4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
