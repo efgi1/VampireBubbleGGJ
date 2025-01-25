@@ -255,9 +255,29 @@ PrefabInstance:
       propertyPath: m_FlipY
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3122957595222729985, guid: 96b9de73475550f4b9bf3f4e82c33668, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3122957595222729985, guid: 96b9de73475550f4b9bf3f4e82c33668, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3122957595222729985, guid: 96b9de73475550f4b9bf3f4e82c33668, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3122957595222729985, guid: 96b9de73475550f4b9bf3f4e82c33668, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4881734495232792793, guid: 96b9de73475550f4b9bf3f4e82c33668, type: 3}
       propertyPath: m_Name
-      value: Enemy (2)
+      value: FlyingEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5861812934970215227, guid: 96b9de73475550f4b9bf3f4e82c33668, type: 3}
+      propertyPath: _flying
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -430,6 +450,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8690819863129590659, guid: 52cd69a5f9e99e8429565a35b500f7a2, type: 3}
+      propertyPath: m_Color.b
+      value: 0.24082375
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690819863129590659, guid: 52cd69a5f9e99e8429565a35b500f7a2, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5849056
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690819863129590659, guid: 52cd69a5f9e99e8429565a35b500f7a2, type: 3}
+      propertyPath: m_Color.r
+      value: 0.16002135
+      objectReference: {fileID: 0}
+    - target: {fileID: 8690819863129590659, guid: 52cd69a5f9e99e8429565a35b500f7a2, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -542,7 +578,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4881734495232792793, guid: 96b9de73475550f4b9bf3f4e82c33668, type: 3}
       propertyPath: m_Name
-      value: Enemy
+      value: GroundEnemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -613,8 +649,8 @@ SceneRoots:
   - {fileID: 806272578534704597}
   - {fileID: 619394802}
   - {fileID: 3639366216447600528}
-  - {fileID: 1718079500963424297}
   - {fileID: 3795186423453352996}
+  - {fileID: 1056569118}
   - {fileID: 7446985238865794727}
   - {fileID: 9211814155354679130}
-  - {fileID: 1056569118}
+  - {fileID: 1718079500963424297}
