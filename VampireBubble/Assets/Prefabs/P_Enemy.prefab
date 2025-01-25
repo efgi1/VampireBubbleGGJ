@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 280816597204754048}
   - component: {fileID: 3122957595222729985}
-  - component: {fileID: 5861812934970215227}
   - component: {fileID: 4337507016963711692}
+  - component: {fileID: -6414532964512188638}
   m_Layer: 9
   m_Name: P_Enemy
   m_TagString: Enemy
@@ -89,21 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5861812934970215227
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4881734495232792793}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 274b4568b091b9c43bec74c3490ccd6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _moveSpeed: 1
-  _avoidanceRadius: 1
-  _flying: 0
 --- !u!58 &4337507016963711692
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -140,3 +125,18 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.07}
   m_Radius: 0.6
+--- !u!114 &-6414532964512188638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4881734495232792793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274b4568b091b9c43bec74c3490ccd6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _moveSpeed: 1
+  _avoidanceRadius: 1
+  _flying: 0
