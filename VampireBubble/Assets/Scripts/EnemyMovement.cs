@@ -45,7 +45,10 @@ public class EnemyMovement : MonoBehaviour
             if (collider != _collider && shouldAvoid)
             {
                 Vector3 diff = transform.position - collider.transform.position;
-                separationDir += diff.normalized / diff.magnitude;
+                if (diff.magnitude != 0)
+                {
+                    separationDir += diff.normalized / diff.magnitude;
+                }
             }
         }
         return separationDir;
