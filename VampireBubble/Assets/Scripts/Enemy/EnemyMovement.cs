@@ -20,6 +20,8 @@ public class EnemyMovement : MonoBehaviour
         {
             gameObject.layer = LayerMask.NameToLayer("FlyingEnemy");
         }
+
+        _avoidanceRadius *= transform.localScale.x;
     }
 
     void Update()

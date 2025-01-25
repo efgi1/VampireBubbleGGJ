@@ -11,6 +11,7 @@ public class EnemySpawner : MonoBehaviour
     private Vector2 _screenMiddle => new Vector2(Camera.main.transform.position.x, Camera.main.transform.position.y);
 
     private Timer _spawnTimer = new Timer();
+    private ObjectPool<EnemyController> _enemyPool;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,6 +21,9 @@ public class EnemySpawner : MonoBehaviour
 
         _spawnTimer.OnTimerEnd.AddListener(SpawnEnemy);
         _spawnTimer.OnTimerEnd.AddListener(RestartSpawnTimer);
+
+        _enemyPool = new ObjectPool<EnemyController>(_enemyPrefab.GetComponent<EnemyController>(), 200);
+
         RestartSpawnTimer();
     }
 
@@ -41,12 +45,12 @@ public class EnemySpawner : MonoBehaviour
             data = _enemyData[1];
         }
         Vector2 randomPosition = GetRandomPositionOutsideScreen();
-        var enemy = Instantiate(_enemyPrefab, randomPosition, Quaternion.identity);
-        var controller = enemy.GetComponent<EnemyController>();
-        controller.SetFlying(data.Flying);
-        controller.SetSprite(data.Sprite);
-        controller.SetDps(data.Damage);
-        controller.SetHealth(data.Health);
+        var enemy = _enemyPool.Get();
+        enemy.transform.position = randomPosition;
+        enemy.SetFlying(data.Flying);
+        enemy.SetSprite(data.Sprite);
+        enemy.SetDps(data.Damage);
+        enemy.SetHealth(data.Health);
     }
 
     void RestartSpawnTimer()
@@ -69,6 +73,6 @@ public class EnemySpawner : MonoBehaviour
             randomY = randomY > 0 ? _spawnOffset.y + 1 : -_spawnOffset.y - 1;
         }
 
-        return new Vector2(randomX, randomY);
+        return new Vector2(randomX, randomY) + _screenMiddle;
     }
 }
