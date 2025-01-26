@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     private List<WeaponBase> _weapons = new List<WeaponBase>();
     public GameObject WeaponPrefab;
 
+    [SerializeField] private GameObject _shieldObject;
+    private float shieldTime = 0;
+
     // Hit Color
     [SerializeField] private float _colorChangeSpeed = 0.05f;
     [SerializeField] private Color _damageColor;
@@ -117,6 +120,11 @@ public class PlayerController : MonoBehaviour
             _spriteRenderer.color = Color.Lerp(_spriteRenderer.color , _originalColor, _colorChangeSpeed);
         }
 
+        shieldTime -= Time.deltaTime;
+        if (shieldTime <= 0)
+        {
+            _shieldObject.SetActive(false);
+        }
         _damageDelayTimer -= Time.deltaTime;
 
         UpdateWeapons();
@@ -124,6 +132,7 @@ public class PlayerController : MonoBehaviour
 
      private void TakeDamage(float damageTaken)
      {
+         if (shieldTime > 0) return;
           // Wait for timer to take damage
           if(_damageDelayTimer > 0) { return; }
           _damageDelayTimer = _heroDataSO.DamageDelayTime;
@@ -155,14 +164,15 @@ public class PlayerController : MonoBehaviour
          var randomIndex = UnityEngine.Random.Range(0, _deathSounds.Length);
          _audioSource.PlayOneShot(_deathSounds[randomIndex], 1f);
          GameManager.Instance.PlayerController.Animator.Play("Player_Death_Animation");
-         
-         GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
+
          // Wait for the animation and sound to finish
-         while (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
+         while (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 && _audioSource.isPlaying)
          {
              Animator.Update(Time.unscaledDeltaTime);
              yield return null;
          }
+
+         GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
      }
 
      public void ApplyPickup(PickupData data)
@@ -189,7 +199,8 @@ public class PlayerController : MonoBehaviour
                 ApplyBomb();
                 break;
             case PickupType.Shield:
-                // Add weapon to player
+                shieldTime = data.Value;
+                _shieldObject.SetActive(true);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

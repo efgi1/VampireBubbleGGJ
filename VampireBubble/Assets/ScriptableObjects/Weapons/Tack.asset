@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c4c1195e0fd20494e8d73b610a31343a, type: 3}
-  m_Name: RoseWhip
+  m_Name: Tack
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 8157373062170933784, guid: 00c79e5ed5111e2469cb40bc9a1feab7, type: 3}
+  Sprite: {fileID: 2567200848445385240, guid: 00c79e5ed5111e2469cb40bc9a1feab7, type: 3}
   Projectile: 1
-  NearestEnemy: 1
-  BoxHeight: 1.5
-  BoxWidth: 4
-  Damage: 22
-  AttackCooldown: 1
+  NearestEnemy: 0
+  BoxHeight: 1
+  BoxWidth: 1
+  Damage: 10
+  AttackCooldown: 0.5
   Duration: 0
-  DebugDisplayTime: 0.1
+  DebugDisplayTime: 0

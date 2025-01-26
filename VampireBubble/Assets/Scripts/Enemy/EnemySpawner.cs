@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using UnityEditor.PackageManager.UI;
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private List<EnemyData> _enemyData;
     [SerializeField] private Vector2 _currentSpawnRateRange;
+    [SerializeField] private AnimationCurve _randomSizeCurve;
     private Vector2 _spawnOffset;
     private Vector2 _screenMiddle => new Vector2(Camera.main.transform.position.x, Camera.main.transform.position.y);
 
@@ -60,6 +61,36 @@ public class EnemySpawner : MonoBehaviour
         Vector2 randomPosition = GetRandomPositionOutsideScreen();
         var enemy = _enemyPool.Get();
         enemy.Initialize(data, randomPosition);
+        float randomSize = GetRandomValueFromCurve(_randomSizeCurve);
+        enemy.transform.localScale = new Vector3(randomSize, randomSize, randomSize);
+        enemy.GetComponent<SpriteRenderer>().color = GetRandomLightColor();
+    }
+
+    private float GetRandomValueFromCurve(AnimationCurve curve)
+    {
+        if (curve == null || curve.length == 0)
+        {
+            Debug.LogWarning("Curve is not defined or has no keys.");
+            return 0f;
+        }
+
+        // Get the time range of the curve
+        float startTime = curve.keys[0].time;
+        float endTime = curve.keys[curve.length - 1].time;
+
+        // Generate a random time within the range
+        float randomTime = Random.Range(startTime, endTime);
+
+        // Evaluate the curve at the random time
+        return curve.Evaluate(randomTime);
+    }
+
+    private Color GetRandomLightColor()
+    {
+        float r = Random.Range(0.5f, 1f);
+        float g = Random.Range(0.5f, 1f);
+        float b = Random.Range(0.5f, 1f);
+        return new Color(r, g, b);
     }
 
     private void RestartSpawnTimer()
