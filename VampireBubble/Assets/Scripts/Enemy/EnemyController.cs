@@ -1,4 +1,6 @@
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.U2D;
 
 public class EnemyController : MonoBehaviour
 {
@@ -9,38 +11,29 @@ public class EnemyController : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
 
     public bool Flying => _flying;
+    public float Speed => _speed;
+    public float Dps => _dps;
+    public UnityEvent OnDeath = new UnityEvent();
 
     void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
-    void Start()
+
+    public void Initialize(EnemyData data, Vector3 randomPosition)
     {
+        transform.position = randomPosition;
+        _speed = data.Speed;
+        SetFlying(data.Flying);
+        _spriteRenderer.sprite = data.Sprite;
+        _dps = data.Damage;
+        _health = data.Health;
     }
 
-    void Update()
-    {
-        
-    }
-
-    public void SetHealth(float health)
-    {
-        _health = health;
-    }
-
-    public void SetSpeed(float speed)
-    {
-        _speed = speed;
-    }
-
-    public void SetDps(float dps)
-    {
-        _dps = dps;
-    }
-
-    public void SetFlying(bool flying)
+    private void SetFlying(bool flying)
     {
         _flying = flying;
+        // below is temp
         if (flying)
         {
             _spriteRenderer.flipY = true;
@@ -48,8 +41,13 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void SetSprite(Sprite sprite)
+    public void Damage(float amount)
     {
-        _spriteRenderer.sprite = sprite;
+        _health -= amount;
+        if (_health <= 0)
+        {
+            EnemySpawner.Instance.OnDeath(this);
+            OnDeath?.Invoke();
+        }
     }
 }

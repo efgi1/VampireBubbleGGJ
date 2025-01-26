@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public static EnemySpawner Instance { get; private set; }
+
     [SerializeField] private GameObject _enemyPrefab;
     [SerializeField] private List<EnemyData> _enemyData;
     [SerializeField] private Vector2 _currentSpawnRateRange;
@@ -13,7 +15,19 @@ public class EnemySpawner : MonoBehaviour
     private Timer _spawnTimer = new Timer();
     private ObjectPool<EnemyController> _enemyPool;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Optional: Keep the spawner across scenes
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     void Start()
     {
         _spawnOffset.x = Camera.main.orthographicSize * Camera.main.aspect;
@@ -33,7 +47,7 @@ public class EnemySpawner : MonoBehaviour
         _spawnTimer.Update();
     }
 
-    void SpawnEnemy()
+    private void SpawnEnemy()
     {
         EnemyData data;
         if (Random.value > 0.5f)
@@ -46,14 +60,10 @@ public class EnemySpawner : MonoBehaviour
         }
         Vector2 randomPosition = GetRandomPositionOutsideScreen();
         var enemy = _enemyPool.Get();
-        enemy.transform.position = randomPosition;
-        enemy.SetFlying(data.Flying);
-        enemy.SetSprite(data.Sprite);
-        enemy.SetDps(data.Damage);
-        enemy.SetHealth(data.Health);
+        enemy.Initialize(data, randomPosition);
     }
 
-    void RestartSpawnTimer()
+    private void RestartSpawnTimer()
     {
         _spawnTimer.StartTimer(Random.Range(_currentSpawnRateRange.x, _currentSpawnRateRange.y));
     }
@@ -74,5 +84,10 @@ public class EnemySpawner : MonoBehaviour
         }
 
         return new Vector2(randomX, randomY) + _screenMiddle;
+    }
+
+    public void OnDeath(EnemyController controller)
+    {
+        _enemyPool.ReturnToPool(controller);
     }
 }

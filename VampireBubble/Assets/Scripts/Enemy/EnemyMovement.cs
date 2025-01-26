@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    
-    [SerializeField] private float _moveSpeed = 2.5f;
     [SerializeField] private float _avoidanceRadius = 1.0f;
     private EnemyController _controller;
     private PlayerController[] _players; // TODO player access anywhere, one lookup
@@ -30,7 +28,7 @@ public class EnemyMovement : MonoBehaviour
         Vector3 avoidanceDir = GetSeparationDirection();
         Vector3 moveDir = (playerDir + avoidanceDir).normalized;
 
-        transform.position += moveDir * _moveSpeed * Time.deltaTime;
+        transform.position += moveDir * _controller.Speed * Time.deltaTime;
     }
 
     

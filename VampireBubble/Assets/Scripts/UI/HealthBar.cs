@@ -21,7 +21,7 @@ public class HealthBar : MonoBehaviour
           _player.HealthChangeEvent -= OnHealthChanged;
      }
 
-     private void OnHealthChanged(int newHealth)
+     private void OnHealthChanged(float newHealth)
      {
           _healthSlider.value = newHealth;
      }

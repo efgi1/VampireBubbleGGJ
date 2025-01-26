@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using NUnit.Framework;
 using NUnit.Framework.Internal;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,18 +10,25 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    // Weapons
+    [SerializeField] private WeaponData[] _weaponData;
+    private List<WeaponBase> _weapons = new List<WeaponBase>();
+    public GameObject WeaponPrefab;
+
+    // Hit Color
     [SerializeField] private float _colorChangeSpeed = 0.05f;
     private Color _originalColor;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider;
-    private int _enemyCollisionCount = 0;
+    
 
      // Health
      [SerializeField] public HeroData _heroDataSO;
-    [SerializeField]
-    private int _currentHealth = 10;
-     public UnityAction<int> HealthChangeEvent;
+     [SerializeField] private float _currentHealth = 10;
+     public UnityAction<float> HealthChangeEvent;
      private float _damageDelayTimer;
+     private List<float> _collidingMonsterDamages = new List<float>();
+     private float _maxCurrentDamage = 0;
 
      //Death
      public UnityAction DeathEvent;
@@ -33,23 +43,36 @@ public class PlayerController : MonoBehaviour
           _damageDelayTimer = _heroDataSO.DamageDelayTime;
     }
 
+    void Start()
+    {
+        foreach(WeaponData weapon in _weaponData)
+        {
+            GameObject newWeaponObject = Instantiate(WeaponPrefab, transform);
+            WeaponBase newWeapon = newWeaponObject.AddComponent<AreaOfEffectWeapon>();
+            newWeapon.Initialize(weapon);
+            _weapons.Add(newWeapon);
+        }
+    }
+
     void Update()
     {
-        if (_enemyCollisionCount > 0)
+        if (_maxCurrentDamage > 0)
         {
             _spriteRenderer.color = Color.Lerp(_spriteRenderer.color , Color.red, _colorChangeSpeed);
                // Can adjust how much damage is taken here if we want to.
-               TakeDamage(1);
+               TakeDamage(_maxCurrentDamage);
         }
         else
         {
             _spriteRenderer.color = Color.Lerp(_spriteRenderer.color , _originalColor, _colorChangeSpeed);
-          }
+        }
 
         _damageDelayTimer -= Time.deltaTime;
-     }
 
-     private void TakeDamage(int damageTaken)
+        UpdateWeapons();
+    }
+
+     private void TakeDamage(float damageTaken)
      {
           // Wait for timer to take damage
           if(_damageDelayTimer > 0) { return; }
@@ -70,15 +93,32 @@ public class PlayerController : MonoBehaviour
           }
      }
 
+     public void OnWeaponPickup()
+     {
 
-     public void HandleEnemyCollisionEnter(Collider2D other)
+     }
+
+     private void UpdateWeapons()
     {
-        Debug.Log($"Colliding with {++_enemyCollisionCount} enemies");
+        foreach (WeaponBase weapon in _weapons)
+        {
+            weapon.UpdateAttackTimer();
+        }
+    }
+
+
+    public void HandleEnemyCollisionEnter(Collider2D other)
+     {
+         _collidingMonsterDamages.Add(other.GetComponent<EnemyController>().Dps);
+         _maxCurrentDamage = _collidingMonsterDamages.Count > 0 ? _collidingMonsterDamages.Max() : 0;
+        //Debug.Log($"Colliding with {++_enemyCollisionCount} enemies");
     }
 
     public void HandleEnemyCollisionExit(Collider2D other)
     {
-        Debug.Log($"Colliding with {--_enemyCollisionCount} enemies");
+        _collidingMonsterDamages.Remove(other.GetComponent<EnemyController>().Dps);
+        _maxCurrentDamage = _collidingMonsterDamages.Count > 0 ? _collidingMonsterDamages.Max() : 0;
+        //Debug.Log($"Colliding with {--_enemyCollisionCount} enemies");
     }
     
 }
