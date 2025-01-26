@@ -2,12 +2,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    private GameStateBase _currentState;
-    public GameStateBase CurrentState => _currentState;
+    public static GameManager Instance { get; private set; }
+
+    public GameStateBase CurrentState { get; private set; }
+    public PlayerController PlayerController { get; private set; }
+    public float TimeElapsedSinceStart { get; set; }
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+            PlayerController = FindAnyObjectByType<PlayerController>();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     void Start()
@@ -18,13 +30,13 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _currentState?.OnUpdate();
+        CurrentState?.OnUpdate();
     }
 
     public void ChangeState(GameStateBase newState)
     {
-        _currentState?.OnExit();
-        _currentState = newState;
-        _currentState.OnEnter();
+        CurrentState?.OnExit();
+        CurrentState = newState;
+        CurrentState.OnEnter();
     }
 }

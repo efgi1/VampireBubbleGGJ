@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class MenuState : GameStateBase
+public class GameOverState: GameStateBase
 {
-    public MenuState(GameManager gameManager) : base(gameManager)
+    public GameOverState(GameManager gameManager) : base(gameManager)
     {
     }
 
@@ -15,11 +15,16 @@ public class MenuState : GameStateBase
     public override void OnExit()
     {
         base.OnExit();
+        _gameManager.TimeElapsedSinceStart = 0;
         Time.timeScale = 1;
     }
 
     public override void OnUpdate()
     {
         base.OnUpdate();
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            _gameManager.ChangeState(new MenuState(_gameManager));
+        }
     }
 }

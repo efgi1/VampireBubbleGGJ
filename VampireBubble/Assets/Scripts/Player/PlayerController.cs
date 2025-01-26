@@ -30,6 +30,11 @@ public class PlayerController : MonoBehaviour
      private List<float> _collidingMonsterDamages = new List<float>();
      private float _maxCurrentDamage = 0;
 
+     // Experience
+     private float _experience = 0;
+     private int _level = 1;
+
+
      //Death
      public UnityAction DeathEvent;
 
@@ -85,11 +90,10 @@ public class PlayerController : MonoBehaviour
           {
                // TODO: impement game over
                Debug.Log("Health reached zero: Game Over");
-               _currentHealth = _heroDataSO.MaxHealth;
-               HealthChangeEvent?.Invoke(_currentHealth);
-
                // TODO: Implement death
                DeathEvent?.Invoke();
+
+               GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
           }
      }
 
@@ -119,6 +123,14 @@ public class PlayerController : MonoBehaviour
         _collidingMonsterDamages.Remove(other.GetComponent<EnemyController>().Dps);
         _maxCurrentDamage = _collidingMonsterDamages.Count > 0 ? _collidingMonsterDamages.Max() : 0;
         //Debug.Log($"Colliding with {--_enemyCollisionCount} enemies");
+    }
+
+    public void ResetForNewGame()
+    {
+        _currentHealth = _heroDataSO.MaxHealth;
+        HealthChangeEvent?.Invoke(_currentHealth);
+        _experience = 0;
+        _level = 1;
     }
     
 }

@@ -20,7 +20,6 @@ public class EnemySpawner : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Optional: Keep the spawner across scenes
         }
         else
         {

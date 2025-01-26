@@ -10,6 +10,7 @@ public class PlayingState : GameStateBase
     {
         base.OnEnter();
         Debug.Log("Entering Play");
+        GameManager.Instance.PlayerController.ResetForNewGame();
     }
 
     public override void OnExit()
@@ -25,6 +26,8 @@ public class PlayingState : GameStateBase
         {
             _gameManager.ChangeState(new PausedState(_gameManager));
         }
-        
+
+        _gameManager.TimeElapsedSinceStart += Time.deltaTime;
+
     }
 }
