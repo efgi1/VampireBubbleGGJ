@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Tack
   m_EditorClassIdentifier: 
   Sprite: {fileID: 2567200848445385240, guid: 00c79e5ed5111e2469cb40bc9a1feab7, type: 3}
-  Projectile: 1
-  NearestEnemy: 0
-  BoxHeight: 1
-  BoxWidth: 1
+  Projectile: 0
+  NearestEnemy: 1
+  BoxHeight: 2
+  BoxWidth: 2
   Damage: 10
-  AttackCooldown: 0.5
-  Duration: 0
-  DebugDisplayTime: 0
+  AttackCooldown: 3
+  Duration: 3
+  DebugDisplayTime: 3

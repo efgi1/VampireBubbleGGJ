@@ -14,6 +14,7 @@ public class AreaOfEffectWeapon : WeaponBase
     private float _debugDisplayTime;
     private bool _nearestEnemy;
     private bool _projectile;
+    private float _remainingAttackTime = 0;
 
     public override void Initialize(WeaponData weaponData)
     {
@@ -34,12 +35,46 @@ public class AreaOfEffectWeapon : WeaponBase
 
     protected override void Attack()
     {
+        
         Vector3 facingDir = GameManager.Instance.PlayerController.FacingDir();
         transform.localPosition = new Vector3(facingDir.x, 0, 0);
         Vector3 areaBoxCenter = transform.position + facingDir * _damageBox.x * 0.5f - facingDir;
+        if (_nearestEnemy)
+        {
+            var enemy = EnemySpawner.Instance.GetNearestEnemy(transform.position);
+            areaBoxCenter = enemy.transform.position;
+            transform.position = enemy.transform.position;
+        }
+       
+        StartCoroutine(ShowAttack());
+        if (_duration != 0)
+        {
+            _remainingAttackTime = _duration;
+            StartCoroutine(AttackHelper(areaBoxCenter));
+        }
+        else
+        {
+            DealDamage(areaBoxCenter);
+        }
+
+
+    }
+
+    private IEnumerator AttackHelper(Vector3 areaBoxCenter)
+    {
+        while (_remainingAttackTime > 0)
+        {
+            yield return new WaitForSeconds(0.1f);
+            DealDamage(areaBoxCenter);
+            _remainingAttackTime -= 0.1f;
+        }
+
+    }
+
+    private void DealDamage(Vector3 areaBoxCenter)
+    {
         var colliders = Physics2D.OverlapBoxAll(areaBoxCenter, _damageBox, 0);
         DrawDebugBox(areaBoxCenter);
-        StartCoroutine(ShowAttack());
         foreach (var collider in colliders)
         {
             if (collider.CompareTag("Enemy"))
@@ -52,13 +87,13 @@ public class AreaOfEffectWeapon : WeaponBase
                 }
             }
         }
-
     }
 
     private IEnumerator ShowAttack()
     {
         _spriteRenderer.enabled = true;
-        yield return new WaitForSeconds(0.25f);
+        var timeToShow = _duration > 0 ? _duration : 0.25f;
+        yield return new WaitForSeconds(timeToShow);
         _spriteRenderer.enabled = false;
 
     }

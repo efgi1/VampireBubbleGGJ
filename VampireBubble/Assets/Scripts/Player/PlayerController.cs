@@ -96,13 +96,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        foreach(WeaponData weapon in _weaponData)
-        {
-            GameObject newWeaponObject = Instantiate(WeaponPrefab, transform);
-            WeaponBase newWeapon = newWeaponObject.AddComponent<AreaOfEffectWeapon>();
-            newWeapon.Initialize(weapon);
-            _weapons.Add(newWeapon);
-        }
+        GameObject newWeaponObject = Instantiate(WeaponPrefab, transform);
+        WeaponBase newWeapon = newWeaponObject.AddComponent<AreaOfEffectWeapon>();
+        newWeapon.Initialize(_weaponData[0]);
+        _weapons.Add(newWeapon);
 
         GameManager.Instance.OnKillCountChange.AddListener(GainExperience);
     }
@@ -188,10 +185,16 @@ public class PlayerController : MonoBehaviour
             //    _experience += data.Value;
             //    break;
             case PickupType.NailUpgrade:
-                // Add weapon to player
+                if (_weapons.Count < 2)
+                {
+                    GameObject newWeaponObject = Instantiate(WeaponPrefab);
+                    WeaponBase newWeapon = newWeaponObject.AddComponent<AreaOfEffectWeapon>();
+                    newWeapon.Initialize(_weaponData[1]);
+                    _weapons.Add(newWeapon);
+                }
                 break;
             case PickupType.RoseUpgrade:
-                // Add weapon to player
+                Experience += 10;
                 break;
             case PickupType.ClubUpgrade:
                 // Add weapon to player

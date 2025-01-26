@@ -130,4 +130,24 @@ public class EnemySpawner : MonoBehaviour
     {
         return FindObjectsByType<EnemyController>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).Length;
     }
+
+    public EnemyController GetNearestEnemy(Vector3 position)
+    {
+        EnemyController[] objects =
+            FindObjectsByType<EnemyController>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        EnemyController nearestObject = null;
+        float minDistance = float.MaxValue;
+
+        foreach (EnemyController obj in objects)
+        {
+            float distance = Vector3.Distance(position, obj.transform.position);
+            if (distance < minDistance)
+            {
+                minDistance = distance;
+                nearestObject = obj;
+            }
+        }
+
+        return nearestObject;
+    }
 }

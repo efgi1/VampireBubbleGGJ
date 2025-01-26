@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Club
   m_EditorClassIdentifier: 
   Sprite: {fileID: -1451878839875631212, guid: 00c79e5ed5111e2469cb40bc9a1feab7, type: 3}
-  Projectile: 1
-  NearestEnemy: 1
+  Projectile: 0
+  NearestEnemy: 0
   BoxHeight: 1.5
   BoxWidth: 4
   Damage: 22
