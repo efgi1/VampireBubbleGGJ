@@ -164,15 +164,16 @@ public class PlayerController : MonoBehaviour
          var randomIndex = UnityEngine.Random.Range(0, _deathSounds.Length);
          _audioSource.PlayOneShot(_deathSounds[randomIndex], 1f);
          GameManager.Instance.PlayerController.Animator.Play("Player_Death_Animation");
+         
+
+         GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
 
          // Wait for the animation and sound to finish
-         while (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 && _audioSource.isPlaying)
+         while (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 || _audioSource.isPlaying)
          {
              Animator.Update(Time.unscaledDeltaTime);
              yield return null;
          }
-
-         GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
      }
 
      public void ApplyPickup(PickupData data)
