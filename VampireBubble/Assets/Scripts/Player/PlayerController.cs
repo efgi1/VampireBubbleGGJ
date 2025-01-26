@@ -35,6 +35,11 @@ public class PlayerController : MonoBehaviour
      private float _experience = 0;
      private int _level = 1;
 
+     // Audio
+     [SerializeField] private AudioClip[] _damageSounds = Array.Empty<AudioClip>();
+     [SerializeField] private AudioClip[] _deathSounds = Array.Empty<AudioClip>();
+     private AudioSource _audioSource;
+
 
      //Death
      public UnityAction DeathEvent;
@@ -44,6 +49,7 @@ public class PlayerController : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _originalColor = _spriteRenderer.color;
         _collider = GetComponent<Collider2D>();
+        _audioSource = GetComponent<AudioSource>();
 
           _currentHealth = _heroDataSO.MaxHealth;
           _damageDelayTimer = _heroDataSO.DamageDelayTime;
@@ -89,12 +95,22 @@ public class PlayerController : MonoBehaviour
 
           if (_currentHealth < 0)
           {
-               // TODO: impement game over
                Debug.Log("Health reached zero: Game Over");
-               // TODO: Implement death
                DeathEvent?.Invoke();
-
+               var randomIndex = UnityEngine.Random.Range(0, _deathSounds.Length);
+               _audioSource.PlayOneShot(_deathSounds[randomIndex], 1f);
                GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
+
+               return;
+          }
+
+          if (_damageSounds.Length > 0)
+          {
+              var randomIndex = UnityEngine.Random.Range(0, _damageSounds.Length);
+              if (!_audioSource.isPlaying)
+              {
+                  _audioSource.PlayOneShot(_damageSounds[randomIndex], 1f);
+              }
           }
      }
 

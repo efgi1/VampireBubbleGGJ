@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -8,6 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _gameOverMenu;
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _HUD;
+    [SerializeField] private TMP_Text _scoreText;
 
     private void Awake()
     {
@@ -21,7 +23,12 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    private void Start()
+    {
+        GameManager.Instance.OnKillCountChange.AddListener(UpdateKillCountText);
+    }
+
 
     public void SetMainMenuVisible(bool visible)
     {
@@ -41,5 +48,10 @@ public class UIManager : MonoBehaviour
     public void SetHUDVisible(bool visible)
     {
         _HUD.SetActive(visible);
+    }
+
+    private void UpdateKillCountText(float killCount)
+    {
+        _scoreText.text = $"{killCount}";
     }
 }
