@@ -24,6 +24,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private AudioClip[] _deathSounds = Array.Empty<AudioClip>();
     private AudioSource _audioSource;
 
+    [SerializeField] private PickupData[] _pickupOptions = Array.Empty<PickupData>();
+    [SerializeField] private GameObject _pickupPrefab;
     void Awake()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -69,7 +71,10 @@ public class EnemyController : MonoBehaviour
             yield return null;
         }
         EnemySpawner.Instance.OnDeath(this);
-       
+        CheckSpawnRandomPickup();
+
+
+
     }
 
     private void PlayDeathSound()
@@ -79,6 +84,20 @@ public class EnemyController : MonoBehaviour
             var randomIndex = Random.Range(0, _deathSounds.Length);
             _audioSource.resource = _deathSounds[randomIndex];
             _audioSource.Play();
+        }
+    }
+
+    private void CheckSpawnRandomPickup()
+    {
+        if (_pickupOptions.Length > 0)
+        {
+            var randomIndex = Random.Range(0, _pickupOptions.Length);
+            var selectedPickupData = _pickupOptions[randomIndex];
+            if (Random.value <= selectedPickupData.Chance)
+            {
+                var pickup = Instantiate(_pickupPrefab, transform.position, Quaternion.identity);
+                pickup.GetComponent<Pickup>().Initialize(selectedPickupData);
+            }
         }
     }
 }

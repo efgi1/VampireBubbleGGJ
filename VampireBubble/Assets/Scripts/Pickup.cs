@@ -4,7 +4,7 @@ public class Pickup : MonoBehaviour
 {
     public PickupData Data;
 
-    void Initialize(PickupData data)
+    public void Initialize(PickupData data)
     {
         Data = data;
     }
