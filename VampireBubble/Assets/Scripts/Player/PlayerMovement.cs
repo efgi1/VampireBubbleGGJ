@@ -44,6 +44,15 @@ public class PlayerMovement : MonoBehaviour
         // Flip the player sprite based on movement direction
         if (_movement.x != 0)
             _spriteRenderer.flipX = _movement.x < 0;
+
+        if (_movement.magnitude > 0)
+        {
+            GameManager.Instance.PlayerController.Animator.Play("Player_Run_Animation");
+        }
+        else
+        {
+            GameManager.Instance.PlayerController.Animator.Play("Player_Idle_Animation");
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision)

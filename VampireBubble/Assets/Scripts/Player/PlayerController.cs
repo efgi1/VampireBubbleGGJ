@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
@@ -10,6 +11,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    public Animator Animator;
     // Weapons
     [SerializeField] private WeaponData[] _weaponData;
     private List<WeaponBase> _weapons = new List<WeaponBase>();
@@ -79,6 +81,7 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        Animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _originalColor = _spriteRenderer.color;
         _collider = GetComponent<Collider2D>();
@@ -132,9 +135,7 @@ public class PlayerController : MonoBehaviour
           {
                Debug.Log("Health reached zero: Game Over");
                DeathEvent?.Invoke();
-               var randomIndex = UnityEngine.Random.Range(0, _deathSounds.Length);
-               _audioSource.PlayOneShot(_deathSounds[randomIndex], 1f);
-               GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
+               StartCoroutine(PlayDeathSequence());
 
                return;
           }
@@ -147,6 +148,21 @@ public class PlayerController : MonoBehaviour
                   _audioSource.PlayOneShot(_damageSounds[randomIndex], 1f);
               }
           }
+     }
+
+     private IEnumerator PlayDeathSequence()
+     {
+         var randomIndex = UnityEngine.Random.Range(0, _deathSounds.Length);
+         _audioSource.PlayOneShot(_deathSounds[randomIndex], 1f);
+         GameManager.Instance.PlayerController.Animator.Play("Player_Death_Animation");
+         
+         GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
+         // Wait for the animation and sound to finish
+         while (Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1)
+         {
+             Animator.Update(Time.unscaledDeltaTime);
+             yield return null;
+         }
      }
 
      public void ApplyPickup(PickupData data)
