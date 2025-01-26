@@ -27,5 +27,9 @@ public class MenuState : GameStateBase
         {
             _gameManager.ChangeState(new PlayingState(_gameManager));
         }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }

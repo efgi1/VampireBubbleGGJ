@@ -11,6 +11,7 @@ public class GameOverState: GameStateBase
         base.OnEnter();
         Time.timeScale = 0;
         UIManager.Instance.SetGameOverMenuVisible(true);
+        UIManager.Instance.SetHUDVisible(true);
     }
 
     public override void OnExit()
@@ -19,6 +20,7 @@ public class GameOverState: GameStateBase
         _gameManager.TimeElapsedSinceStart = 0;
         Time.timeScale = 1;
         UIManager.Instance.SetGameOverMenuVisible(false);
+        UIManager.Instance.SetHUDVisible(false);
     }
 
     public override void OnUpdate()

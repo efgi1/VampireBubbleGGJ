@@ -32,5 +32,13 @@ public class PausedState : GameStateBase
         {
             _gameManager.ChangeState(new PlayingState(_gameManager, false));
         }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            _gameManager.ChangeState(new PlayingState(_gameManager, false));
+        }
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Application.Quit();
+        }
     }
 }

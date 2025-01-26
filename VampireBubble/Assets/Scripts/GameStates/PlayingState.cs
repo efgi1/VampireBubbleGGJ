@@ -31,7 +31,7 @@ public class PlayingState : GameStateBase
     public override void OnUpdate()
     {
         base.OnUpdate();
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P) )
         {
             _gameManager.ChangeState(new PausedState(_gameManager));
         }
