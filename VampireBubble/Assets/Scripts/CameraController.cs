@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
 
     void Start()
     {
-        _players = FindObjectsByType<PlayerController>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        //_players = FindObjectsByType<PlayerController>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
         _cameraOffset = transform.position.z;
     }
 

@@ -94,4 +94,9 @@ public class EnemySpawner : MonoBehaviour
     {
         _enemyPool.ReturnAllToPool();
     }
+
+    public int GetEnemyCount()
+    {
+        return FindObjectsByType<EnemyController>(FindObjectsInactive.Exclude, FindObjectsSortMode.None).Length;
+    }
 }
