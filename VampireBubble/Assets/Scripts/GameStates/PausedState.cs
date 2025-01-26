@@ -12,6 +12,8 @@ public class PausedState : GameStateBase
         base.OnEnter();
         Time.timeScale = 0;
         Debug.Log("Entering Pause");
+        UIManager.Instance.SetHUDVisible(true);
+        UIManager.Instance.SetPauseMenuVisible(true);
 
     }
 
@@ -20,6 +22,7 @@ public class PausedState : GameStateBase
         base.OnExit();
         Time.timeScale = 1;
         Debug.Log("Exiting Pause");
+        UIManager.Instance.SetPauseMenuVisible(false);
     }
 
     public override void OnUpdate()
@@ -27,7 +30,7 @@ public class PausedState : GameStateBase
         base.OnUpdate();
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            _gameManager.ChangeState(new PlayingState(_gameManager));
+            _gameManager.ChangeState(new PlayingState(_gameManager, false));
         }
     }
 }

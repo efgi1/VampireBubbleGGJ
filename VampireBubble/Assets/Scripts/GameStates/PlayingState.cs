@@ -2,21 +2,28 @@ using UnityEngine;
 
 public class PlayingState : GameStateBase
 {
-    public PlayingState(GameManager gameManager) : base(gameManager)
+    private bool _resetState;
+    public PlayingState(GameManager gameManager, bool resetState = true) : base(gameManager)
     {
+        _resetState = resetState;
     }
 
     public override void OnEnter()
     {
         base.OnEnter();
         Debug.Log("Entering Play");
-        GameManager.Instance.PlayerController.ResetForNewGame();
+        UIManager.Instance.SetHUDVisible(true);
+        if (_resetState)
+        {
+            GameManager.Instance.PlayerController.ResetForNewGame();
+        }
     }
 
     public override void OnExit()
     {
         base.OnExit();
         Debug.Log("Exiting Play");
+        UIManager.Instance.SetHUDVisible(false);
     }
 
     public override void OnUpdate()

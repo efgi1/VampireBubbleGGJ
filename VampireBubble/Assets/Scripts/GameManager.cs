@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        ChangeState(new PlayingState(this));
+        ChangeState(new MenuState(this));
     }
 
     // Update is called once per frame

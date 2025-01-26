@@ -10,16 +10,22 @@ public class MenuState : GameStateBase
     {
         base.OnEnter();
         Time.timeScale = 0;
+        UIManager.Instance.SetMainMenuVisible(true);
     }
 
     public override void OnExit()
     {
         base.OnExit();
         Time.timeScale = 1;
+        UIManager.Instance.SetMainMenuVisible(false);
     }
 
     public override void OnUpdate()
     {
         base.OnUpdate();
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            _gameManager.ChangeState(new PlayingState(_gameManager));
+        }
     }
 }
