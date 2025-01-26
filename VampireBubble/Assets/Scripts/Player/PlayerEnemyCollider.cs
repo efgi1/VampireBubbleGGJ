@@ -17,6 +17,12 @@ public class PlayerEnemyCollider : MonoBehaviour
         {
             _playerController.HandleEnemyCollisionEnter(other);
         }
+        if (other.CompareTag("Pickup"))
+        {
+            var pickup = other.GetComponent<Pickup>();
+            _playerController.ApplyPickup(pickup.Data);
+            pickup.OnPickup();
+        }
     }
 
     void OnTriggerExit2D(Collider2D other)

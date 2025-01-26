@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - ShortObstacle
   - TallObstacle
+  - Pickup
   layers:
   - Default
   - TransparentFX

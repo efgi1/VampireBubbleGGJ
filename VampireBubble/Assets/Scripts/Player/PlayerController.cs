@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour
      public UnityEvent<int> OnLevelUp = new();
 
     // Audio
+    [SerializeField] private AudioClip[] _levelUpSounds = Array.Empty<AudioClip>();
     [SerializeField] private AudioClip[] _damageSounds = Array.Empty<AudioClip>();
      [SerializeField] private AudioClip[] _deathSounds = Array.Empty<AudioClip>();
      private AudioSource _audioSource;
@@ -232,7 +233,14 @@ public class PlayerController : MonoBehaviour
             Experience -= ExperienceToNextLevel;
             ExperienceToNextLevel *= 1.5f;
             Level++;
+            var randomIndex = UnityEngine.Random.Range(0, _levelUpSounds.Length);
+            _audioSource.PlayOneShot(_levelUpSounds[randomIndex]);
+
         }
     }
 
+    internal Vector3 FacingDir()
+    {
+        return _spriteRenderer.flipX ? -transform.right : transform.right;
+    }
 }
