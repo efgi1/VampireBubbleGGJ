@@ -32,8 +32,45 @@ public class PlayerController : MonoBehaviour
      private float _maxCurrentDamage = 0;
 
      // Experience
-     private float _experience = 0;
+     public float _experienceToNextLevel = 10f;
+     
+     public UnityEvent<float> OnExperienceNeededChange = new();
+     public float ExperienceToNextLevel
+     {
+         get => _experienceToNextLevel;
+         set { 
+             OnExperienceNeededChange?.Invoke(value); 
+             _experienceToNextLevel = value;
+         }
+     }
+     public float _experience = 0;
+
+     
+     public UnityEvent<float> OnExperienceChange = new();
+     public float Experience
+     {
+         get => _experience;
+         set { 
+             OnExperienceChange?.Invoke(value); 
+             _experience = value;
+         }
+     }
      private int _level = 1;
+     public int Level
+     {
+         get => _level;
+         set { 
+             OnLevelUp?.Invoke(value); 
+             _level = value;
+         }
+     }
+
+     public UnityEvent<int> OnLevelUp = new();
+
+    // Audio
+    [SerializeField] private AudioClip[] _damageSounds = Array.Empty<AudioClip>();
+     [SerializeField] private AudioClip[] _deathSounds = Array.Empty<AudioClip>();
+     private AudioSource _audioSource;
 
 
      //Death
@@ -44,6 +81,7 @@ public class PlayerController : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _originalColor = _spriteRenderer.color;
         _collider = GetComponent<Collider2D>();
+        _audioSource = GetComponent<AudioSource>();
 
           _currentHealth = _heroDataSO.MaxHealth;
           _damageDelayTimer = _heroDataSO.DamageDelayTime;
@@ -58,6 +96,8 @@ public class PlayerController : MonoBehaviour
             newWeapon.Initialize(weapon);
             _weapons.Add(newWeapon);
         }
+
+        GameManager.Instance.OnKillCountChange.AddListener(GainExperience);
     }
 
     void Update()
@@ -89,18 +129,60 @@ public class PlayerController : MonoBehaviour
 
           if (_currentHealth < 0)
           {
-               // TODO: impement game over
                Debug.Log("Health reached zero: Game Over");
-               // TODO: Implement death
                DeathEvent?.Invoke();
-
+               var randomIndex = UnityEngine.Random.Range(0, _deathSounds.Length);
+               _audioSource.PlayOneShot(_deathSounds[randomIndex], 1f);
                GameManager.Instance.ChangeState(new GameOverState(GameManager.Instance));
+
+               return;
+          }
+
+          if (_damageSounds.Length > 0)
+          {
+              var randomIndex = UnityEngine.Random.Range(0, _damageSounds.Length);
+              if (!_audioSource.isPlaying)
+              {
+                  _audioSource.PlayOneShot(_damageSounds[randomIndex], 1f);
+              }
           }
      }
 
-     public void OnWeaponPickup()
+     public void ApplyPickup(PickupData data)
      {
+        switch(data.Type)
+        {
+            case PickupType.Health:
+                _currentHealth += data.Value;
+                HealthChangeEvent?.Invoke(_currentHealth);
+                break;
+            //case PickupType.Experience:
+            //    _experience += data.Value;
+            //    break;
+            case PickupType.NailUpgrade:
+                // Add weapon to player
+                break;
+            case PickupType.RoseUpgrade:
+                // Add weapon to player
+                break;
+            case PickupType.ClubUpgrade:
+                // Add weapon to player
+                break;
+            case PickupType.Bomb:
+                ApplyBomb();
+                break;
+            case PickupType.Shield:
+                // Add weapon to player
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
 
+     private void ApplyBomb()
+     {
+        GameManager.Instance.EnemiesKilled += EnemySpawner.Instance.GetEnemyCount();
+        EnemySpawner.Instance.ClearEnemies();
      }
 
      private void UpdateWeapons()
@@ -130,9 +212,27 @@ public class PlayerController : MonoBehaviour
     {
         _currentHealth = _heroDataSO.MaxHealth;
         HealthChangeEvent?.Invoke(_currentHealth);
-        _experience = 0;
-        _level = 1;
+        Experience = 0;
+        Level = 1;
         transform.position = Vector3.zero;
+        ExperienceToNextLevel = 10;
+
     }
-    
+
+    public void GainExperience(float killCount)
+    {
+        if (killCount == 0)
+        {
+            Experience = 0;
+            return;
+        }
+        Experience++;
+        if (Experience >= ExperienceToNextLevel)
+        {
+            Experience -= ExperienceToNextLevel;
+            ExperienceToNextLevel *= 1.5f;
+            Level++;
+        }
+    }
+
 }

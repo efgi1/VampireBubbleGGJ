@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,6 +10,23 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject _gameOverMenu;
     [SerializeField] private GameObject _pauseMenu;
     [SerializeField] private GameObject _HUD;
+    [SerializeField] private TMP_Text _scoreText;
+    [SerializeField] private TMP_Text _levelText;
+    [SerializeField] private Slider _experienceSlider;
+
+    private void OnDestroy()
+    {
+    }
+
+    private void OnExperienceChanged(float newExperience)
+    {
+        _experienceSlider.value = newExperience;
+    }
+
+    private void OnExperienceToNextLevelChange(float experience)
+    {
+        _experienceSlider.maxValue = experience;
+    }
 
     private void Awake()
     {
@@ -21,7 +40,18 @@ public class UIManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    private void Start()
+    {
+        GameManager.Instance.OnKillCountChange.AddListener(UpdateKillCountText);
+        GameManager.Instance.PlayerController.OnLevelUp.AddListener(UpdateLevelText);
+        _experienceSlider.maxValue = GameManager.Instance.PlayerController.ExperienceToNextLevel;
+        _experienceSlider.value = 0;
+
+        GameManager.Instance.PlayerController.OnExperienceChange.AddListener(OnExperienceChanged);
+        GameManager.Instance.PlayerController.OnExperienceNeededChange.AddListener(OnExperienceToNextLevelChange);
+    }
+
 
     public void SetMainMenuVisible(bool visible)
     {
@@ -41,5 +71,14 @@ public class UIManager : MonoBehaviour
     public void SetHUDVisible(bool visible)
     {
         _HUD.SetActive(visible);
+    }
+
+    private void UpdateKillCountText(float killCount)
+    {
+        _scoreText.text = $"{killCount}";
+    }
+    private void UpdateLevelText(int level)
+    {
+        _levelText.text = $"{level}";
     }
 }

@@ -15,6 +15,7 @@ public class PlayingState : GameStateBase
         UIManager.Instance.SetHUDVisible(true);
         if (_resetState)
         {
+            GameManager.Instance.EnemiesKilled = 0;
             GameManager.Instance.PlayerController.ResetForNewGame();
             EnemySpawner.Instance.ClearEnemies();
         }
