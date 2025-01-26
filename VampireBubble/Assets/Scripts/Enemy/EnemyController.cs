@@ -39,6 +39,11 @@ public class EnemyController : MonoBehaviour
             _spriteRenderer.flipY = true;
             _spriteRenderer.color = Color.red;
         }
+        else
+        {
+            _spriteRenderer.flipY = false;
+            _spriteRenderer.color = Color.green;
+        }
     }
 
     public void Damage(float amount)

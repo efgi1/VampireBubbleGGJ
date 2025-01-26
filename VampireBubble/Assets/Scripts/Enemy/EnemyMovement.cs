@@ -5,13 +5,11 @@ public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float _avoidanceRadius = 1.0f;
     private EnemyController _controller;
-    private PlayerController[] _players; // TODO player access anywhere, one lookup
     private Collider2D _collider;
 
 
     void Start()
     {
-        _players = FindObjectsByType<PlayerController>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
         _collider = GetComponent<Collider2D>();
         _controller = GetComponent<EnemyController>();
         if (_controller.Flying)
@@ -24,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        Vector3 playerDir = (_players[0].transform.position - transform.position).normalized;
+        Vector3 playerDir = (GameManager.Instance.PlayerController.transform.position - transform.position).normalized;
         Vector3 avoidanceDir = GetSeparationDirection();
         Vector3 moveDir = (playerDir + avoidanceDir).normalized;
 
