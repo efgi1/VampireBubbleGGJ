@@ -41,7 +41,7 @@ public class AreaOfEffectWeapon : WeaponBase
         Vector3 areaBoxCenter = transform.position + facingDir * _damageBox.x * 0.5f - facingDir;
         if (_nearestEnemy)
         {
-            var enemy = EnemySpawner.Instance.GetNearestEnemy(transform.position);
+            var enemy = EnemySpawner.Instance.GetNearestEnemy(GameManager.Instance.PlayerController.transform.position);
             areaBoxCenter = enemy.transform.position;
             transform.position = enemy.transform.position;
         }
