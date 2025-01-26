@@ -108,7 +108,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 48
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -160,20 +160,20 @@ TextureImporter:
       name: Trashy_Travis_0
       rect:
         serializedVersion: 2
-        x: 52
-        y: 419
-        width: 29
-        height: 39
+        x: 42
+        y: 420
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 6a44a9d396968f8b0800000000000000
-      internalID: -5118225075780565850
+      spriteID: ea199581ed122d54da900f848caa55c1
+      internalID: -1060540087
       vertices: []
       indices: 
       edges: []
@@ -182,20 +182,20 @@ TextureImporter:
       name: Trashy_Travis_1
       rect:
         serializedVersion: 2
-        x: 93
-        y: 419
-        width: 31
-        height: 40
+        x: 84
+        y: 420
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: b04fffcaa819d0b90800000000000000
-      internalID: -7273997798339513333
+      spriteID: 022cda5afbb4ed44a9afff59d1b0ad96
+      internalID: 1593892200
       vertices: []
       indices: 
       edges: []
@@ -204,20 +204,20 @@ TextureImporter:
       name: Trashy_Travis_2
       rect:
         serializedVersion: 2
-        x: 135
-        y: 419
-        width: 30
-        height: 39
+        x: 126
+        y: 420
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: ecd19a0452126e370800000000000000
-      internalID: 8351399002887495118
+      spriteID: 7e886ac09c390ff408242a47f20c1a09
+      internalID: 684966765
       vertices: []
       indices: 
       edges: []
@@ -226,20 +226,20 @@ TextureImporter:
       name: Trashy_Travis_3
       rect:
         serializedVersion: 2
-        x: 178
-        y: 419
-        width: 29
-        height: 38
+        x: 168
+        y: 420
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 46f1efa27512c0d40800000000000000
-      internalID: 5551849098908147556
+      spriteID: 0580077377b8ada44bd2558de0b70f33
+      internalID: -1127890611
       vertices: []
       indices: 
       edges: []
@@ -248,20 +248,20 @@ TextureImporter:
       name: Trashy_Travis_4
       rect:
         serializedVersion: 2
-        x: 220
-        y: 419
-        width: 30
-        height: 37
+        x: 210
+        y: 420
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 99d6a5ea383b15c00800000000000000
-      internalID: 887687979715947929
+      spriteID: fda6d1141ea2ae54ca37a4ad99e3da2a
+      internalID: -706739849
       vertices: []
       indices: 
       edges: []
@@ -270,20 +270,20 @@ TextureImporter:
       name: Trashy_Travis_5
       rect:
         serializedVersion: 2
-        x: 261
-        y: 419
-        width: 30
-        height: 39
+        x: 252
+        y: 420
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 38151fb96471fd350800000000000000
-      internalID: 6043574816985928067
+      spriteID: a9ebdbc075988e84c9d4b1dce62f2a9e
+      internalID: 873442007
       vertices: []
       indices: 
       edges: []
@@ -292,20 +292,20 @@ TextureImporter:
       name: Trashy_Travis_6
       rect:
         serializedVersion: 2
-        x: 51
-        y: 335
-        width: 31
-        height: 40
+        x: 42
+        y: 336
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: beff1ef5e5e83c2d0800000000000000
-      internalID: -3259605169299390485
+      spriteID: 48b3926fd424a8541b5903feebe412f5
+      internalID: 795087162
       vertices: []
       indices: 
       edges: []
@@ -314,9 +314,9 @@ TextureImporter:
       name: Trashy_Travis_7
       rect:
         serializedVersion: 2
-        x: 91
-        y: 335
-        width: 28
+        x: 84
+        y: 336
+        width: 42
         height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -324,10 +324,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 285479745e6e98df0800000000000000
-      internalID: -177356837881428606
+      spriteID: 706490439a580034c8b06b2a02a3d1c2
+      internalID: 774544558
       vertices: []
       indices: 
       edges: []
@@ -336,20 +336,20 @@ TextureImporter:
       name: Trashy_Travis_8
       rect:
         serializedVersion: 2
-        x: 137
+        x: 126
         y: 336
-        width: 28
-        height: 41
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 7243f4e8c54b5bea0800000000000000
-      internalID: -5857577430707915737
+      spriteID: f020dd64419045842b9e3a42faefcb53
+      internalID: 286567338
       vertices: []
       indices: 
       edges: []
@@ -358,20 +358,20 @@ TextureImporter:
       name: Trashy_Travis_9
       rect:
         serializedVersion: 2
-        x: 178
-        y: 335
-        width: 28
-        height: 39
+        x: 168
+        y: 336
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a3f3405506204b860800000000000000
-      internalID: 7544657888518881082
+      spriteID: 85525225e44ff844fa81ac58273d2d64
+      internalID: 2092207407
       vertices: []
       indices: 
       edges: []
@@ -380,20 +380,20 @@ TextureImporter:
       name: Trashy_Travis_10
       rect:
         serializedVersion: 2
-        x: 220
-        y: 335
-        width: 27
-        height: 37
+        x: 210
+        y: 336
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 250f3f0dfb1753710800000000000000
-      internalID: 1672367905296347218
+      spriteID: 14dfbc7e36cc4c4469cb5d8903ff6f58
+      internalID: -1129243024
       vertices: []
       indices: 
       edges: []
@@ -402,20 +402,20 @@ TextureImporter:
       name: Trashy_Travis_11
       rect:
         serializedVersion: 2
-        x: 265
-        y: 335
-        width: 22
-        height: 38
+        x: 252
+        y: 336
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4ec7791236b97c5f0800000000000000
-      internalID: -736449163984143132
+      spriteID: 746c467191b287e48b33f34d4fbd1b94
+      internalID: 2014605262
       vertices: []
       indices: 
       edges: []
@@ -424,20 +424,20 @@ TextureImporter:
       name: Trashy_Travis_12
       rect:
         serializedVersion: 2
-        x: 49
-        y: 251
-        width: 34
-        height: 39
+        x: 42
+        y: 252
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e429aa93cca903040800000000000000
-      internalID: 4625367019240985166
+      spriteID: 820b06ab0ade10745a305162e2c7b1ed
+      internalID: -1267142169
       vertices: []
       indices: 
       edges: []
@@ -446,20 +446,20 @@ TextureImporter:
       name: Trashy_Travis_13
       rect:
         serializedVersion: 2
-        x: 91
-        y: 251
-        width: 34
-        height: 40
+        x: 84
+        y: 252
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 8dea401885fb0eed0800000000000000
-      internalID: -2386697415663767848
+      spriteID: 642723caca89d5f4090d5aa946457c4d
+      internalID: 877659974
       vertices: []
       indices: 
       edges: []
@@ -468,20 +468,20 @@ TextureImporter:
       name: Trashy_Travis_14
       rect:
         serializedVersion: 2
-        x: 136
+        x: 126
         y: 252
-        width: 28
-        height: 41
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e6ff56ed730dcd860800000000000000
-      internalID: 7556143213193854830
+      spriteID: eb460d50efa07384cbe9a719d3ccd7cd
+      internalID: 1881903561
       vertices: []
       indices: 
       edges: []
@@ -490,9 +490,9 @@ TextureImporter:
       name: Trashy_Travis_15
       rect:
         serializedVersion: 2
-        x: 174
-        y: 253
-        width: 34
+        x: 168
+        y: 252
+        width: 42
         height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -500,10 +500,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0c9cf29030d46fa70800000000000000
-      internalID: 8860353992332396992
+      spriteID: c4bd98a5cc687294fa8dcd2389699626
+      internalID: 1258930283
       vertices: []
       indices: 
       edges: []
@@ -512,20 +512,20 @@ TextureImporter:
       name: Trashy_Travis_16
       rect:
         serializedVersion: 2
-        x: 215
-        y: 251
-        width: 35
-        height: 37
+        x: 210
+        y: 252
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a6d7c8c35c4391ae0800000000000000
-      internalID: -1578172172687606422
+      spriteID: 9954e56a0a5e7834b84b51b27d58e123
+      internalID: -1137995659
       vertices: []
       indices: 
       edges: []
@@ -534,20 +534,20 @@ TextureImporter:
       name: Trashy_Travis_17
       rect:
         serializedVersion: 2
-        x: 261
-        y: 251
-        width: 28
-        height: 36
+        x: 252
+        y: 252
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 23f10c9c356e42e50800000000000000
-      internalID: 6783800186268294962
+      spriteID: b10ed913e4415ed4095b3e09e5f84902
+      internalID: -439550921
       vertices: []
       indices: 
       edges: []
@@ -556,20 +556,20 @@ TextureImporter:
       name: Trashy_Travis_18
       rect:
         serializedVersion: 2
-        x: 305
-        y: 251
-        width: 23
-        height: 33
+        x: 294
+        y: 252
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 80b05b495f5f51f00800000000000000
-      internalID: 1087045320190528264
+      spriteID: 7785c977aaa61da49a414db53d491857
+      internalID: -1982694041
       vertices: []
       indices: 
       edges: []
@@ -578,20 +578,20 @@ TextureImporter:
       name: Trashy_Travis_19
       rect:
         serializedVersion: 2
-        x: 351
-        y: 251
-        width: 19
-        height: 31
+        x: 336
+        y: 252
+        width: 42
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5ca5803581bac8220800000000000000
-      internalID: 2489552814989662917
+      spriteID: ef95495fe65315740808e232ea3c96db
+      internalID: 1038482918
       vertices: []
       indices: 
       edges: []
@@ -600,7 +600,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f4d25960e593b3e43a1f1701a84cf671
     internalID: 0
     vertices: []
     indices: 
@@ -609,7 +609,27 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Trashy_Travis_0: -1060540087
+      Trashy_Travis_1: 1593892200
+      Trashy_Travis_10: -1129243024
+      Trashy_Travis_11: 2014605262
+      Trashy_Travis_12: -1267142169
+      Trashy_Travis_13: 877659974
+      Trashy_Travis_14: 1881903561
+      Trashy_Travis_15: 1258930283
+      Trashy_Travis_16: -1137995659
+      Trashy_Travis_17: -439550921
+      Trashy_Travis_18: -1982694041
+      Trashy_Travis_19: 1038482918
+      Trashy_Travis_2: 684966765
+      Trashy_Travis_3: -1127890611
+      Trashy_Travis_4: -706739849
+      Trashy_Travis_5: 873442007
+      Trashy_Travis_6: 795087162
+      Trashy_Travis_7: 774544558
+      Trashy_Travis_8: 286567338
+      Trashy_Travis_9: 2092207407
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
