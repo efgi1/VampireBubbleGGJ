@@ -33,17 +33,6 @@ public class EnemyController : MonoBehaviour
     private void SetFlying(bool flying)
     {
         _flying = flying;
-        // below is temp
-        if (flying)
-        {
-            _spriteRenderer.flipY = true;
-            _spriteRenderer.color = Color.red;
-        }
-        else
-        {
-            _spriteRenderer.flipY = false;
-            _spriteRenderer.color = Color.green;
-        }
     }
 
     public void Damage(float amount)

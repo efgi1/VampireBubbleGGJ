@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4c1195e0fd20494e8d73b610a31343a, type: 3}
   m_Name: RoseWhip
   m_EditorClassIdentifier: 
-  Sprite: {fileID: 21300000, guid: cc7e65fd16d39483aa18d865a68e9451, type: 3}
+  Sprite: {fileID: 0}
   Projectile: 1
   NearestEnemy: 1
   BoxHeight: 1.5

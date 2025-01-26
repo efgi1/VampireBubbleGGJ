@@ -22,11 +22,13 @@ public class CameraController : MonoBehaviour
     private Vector3 CalculateMiddlePoint()
     {
         // TODO 4 player best middle
-        Vector3 sum = Vector3.zero;
-        foreach (PlayerController player in _players)
-        {
-            sum += player.transform.position;
-        }
-        return sum / _players.Length;
+        //Vector3 sum = Vector3.zero;
+        //foreach (PlayerController player in _players)
+        //{
+        //    sum += player.transform.position;
+        //}
+        //return sum / _players.Length;
+
+        return GameManager.Instance.PlayerController.transform.position;
     }
 }

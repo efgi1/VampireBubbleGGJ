@@ -55,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
         }
         else
         {
-            data = _enemyData[1];
+            data = _enemyData[0];
         }
         Vector2 randomPosition = GetRandomPositionOutsideScreen();
         var enemy = _enemyPool.Get();

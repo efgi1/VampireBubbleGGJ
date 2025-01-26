@@ -6,6 +6,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float _avoidanceRadius = 1.0f;
     private EnemyController _controller;
     private Collider2D _collider;
+    private SpriteRenderer _spriteRenderer;
 
 
     void Start()
@@ -18,6 +19,7 @@ public class EnemyMovement : MonoBehaviour
         }
 
         _avoidanceRadius *= transform.localScale.x;
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -25,6 +27,8 @@ public class EnemyMovement : MonoBehaviour
         Vector3 playerDir = (GameManager.Instance.PlayerController.transform.position - transform.position).normalized;
         Vector3 avoidanceDir = GetSeparationDirection();
         Vector3 moveDir = (playerDir + avoidanceDir).normalized;
+        if (moveDir.x != 0)
+            _spriteRenderer.flipX = moveDir.x < 0;
 
         transform.position += moveDir * _controller.Speed * Time.deltaTime;
     }

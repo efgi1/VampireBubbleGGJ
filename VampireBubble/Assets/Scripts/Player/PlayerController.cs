@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 
     // Hit Color
     [SerializeField] private float _colorChangeSpeed = 0.05f;
+    [SerializeField] private Color _damageColor;
     private Color _originalColor;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider;
@@ -63,7 +64,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_maxCurrentDamage > 0)
         {
-            _spriteRenderer.color = Color.Lerp(_spriteRenderer.color , Color.red, _colorChangeSpeed);
+            _spriteRenderer.color = Color.Lerp(_spriteRenderer.color , _damageColor, _colorChangeSpeed);
                // Can adjust how much damage is taken here if we want to.
                TakeDamage(_maxCurrentDamage);
         }

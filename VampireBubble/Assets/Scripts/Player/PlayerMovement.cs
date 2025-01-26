@@ -8,11 +8,12 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _movement;
     private InputAction _moveAction;
     private Rigidbody2D _rb;
-
+    private SpriteRenderer _spriteRenderer;
     void Awake()
     {
         _moveAction = _inputActions.FindActionMap("Player").FindAction("Move");
         _rb = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void OnEnable()
@@ -40,6 +41,9 @@ public class PlayerMovement : MonoBehaviour
     {
         // Move the player using Rigidbody2D velocity to ensure proper collision handling
         _rb.linearVelocity = _movement * _moveSpeed;
+        // Flip the player sprite based on movement direction
+        if (_movement.x != 0)
+            _spriteRenderer.flipX = _movement.x < 0;
     }
 
     void OnCollisionEnter2D(Collision2D collision)

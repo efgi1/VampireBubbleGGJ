@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695462cc88b240d49abb28cbe9d8785b, type: 3}
   m_Name: GroundEnemy
   m_EditorClassIdentifier: 
-  Health: 25
+  Health: 15
   Speed: 1
   Damage: 1
   Flying: 0
