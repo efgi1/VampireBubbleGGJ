@@ -89,4 +89,9 @@ public class EnemySpawner : MonoBehaviour
     {
         _enemyPool.ReturnToPool(controller);
     }
+
+    public void ClearEnemies()
+    {
+        _enemyPool.ReturnAllToPool();
+    }
 }

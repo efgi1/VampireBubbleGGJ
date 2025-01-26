@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f827ccf64a756a469263cc1e4676d28, type: 3}
   m_Name: DefaultHeroData
   m_EditorClassIdentifier: 
-  MaxHealth: 500
+  MaxHealth: 250
   DamageDelayTime: 0.02

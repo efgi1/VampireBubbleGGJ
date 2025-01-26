@@ -132,6 +132,7 @@ public class PlayerController : MonoBehaviour
         HealthChangeEvent?.Invoke(_currentHealth);
         _experience = 0;
         _level = 1;
+        transform.position = Vector3.zero;
     }
     
 }

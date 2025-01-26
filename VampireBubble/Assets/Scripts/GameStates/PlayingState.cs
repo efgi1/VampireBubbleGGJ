@@ -16,6 +16,7 @@ public class PlayingState : GameStateBase
         if (_resetState)
         {
             GameManager.Instance.PlayerController.ResetForNewGame();
+            EnemySpawner.Instance.ClearEnemies();
         }
     }
 

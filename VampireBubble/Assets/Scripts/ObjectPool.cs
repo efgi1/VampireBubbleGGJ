@@ -37,4 +37,14 @@ public class ObjectPool<T> where T : MonoBehaviour
         obj.gameObject.SetActive(false);
         _objects.Enqueue(obj);
     }
+
+    public void ReturnAllToPool()
+    {
+        var active = MonoBehaviour.FindObjectsByType<T>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+        foreach (var obj in active)
+        {
+            ReturnToPool(obj);
+        }
+
+    }
 }
