@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37682b793a98a8e4584d2c24de934906, type: 3}
   m_Name: RoseUpgrade
   m_EditorClassIdentifier: 
+  Sprite: {fileID: 8157373062170933784, guid: 00c79e5ed5111e2469cb40bc9a1feab7, type: 3}
   Type: 1
   Value: 0
   Chance: 0.25

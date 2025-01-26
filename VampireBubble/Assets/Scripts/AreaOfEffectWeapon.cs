@@ -1,8 +1,11 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class AreaOfEffectWeapon : WeaponBase
 {
-    
+    [SerializeField] private AudioClip[] _attackSounds = Array.Empty<AudioClip>();
+    private AudioSource _audioSource;
     private SpriteRenderer _spriteRenderer;
     private float _damage;
     private Vector2 _offsetFromPlayer;
@@ -14,8 +17,10 @@ public class AreaOfEffectWeapon : WeaponBase
 
     public override void Initialize(WeaponData weaponData)
     {
+        _audioSource = GetComponent<AudioSource>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _spriteRenderer.sprite = weaponData.Sprite;
+        _spriteRenderer.enabled = false;
         _damage = weaponData.Damage;
         _damageBox.y = weaponData.BoxHeight;
         _damageBox.x = weaponData.BoxWidth;
@@ -29,9 +34,12 @@ public class AreaOfEffectWeapon : WeaponBase
 
     protected override void Attack()
     {
-        Vector3 areaBoxCenter = transform.position + transform.right * _damageBox.x * 0.5f;
+        Vector3 facingDir = GameManager.Instance.PlayerController.FacingDir();
+        transform.localPosition = new Vector3(facingDir.x, 0, 0);
+        Vector3 areaBoxCenter = transform.position + facingDir * _damageBox.x * 0.5f - facingDir;
         var colliders = Physics2D.OverlapBoxAll(areaBoxCenter, _damageBox, 0);
         DrawDebugBox(areaBoxCenter);
+        StartCoroutine(ShowAttack());
         foreach (var collider in colliders)
         {
             if (collider.CompareTag("Enemy"))
@@ -47,6 +55,13 @@ public class AreaOfEffectWeapon : WeaponBase
 
     }
 
+    private IEnumerator ShowAttack()
+    {
+        _spriteRenderer.enabled = true;
+        yield return new WaitForSeconds(0.25f);
+        _spriteRenderer.enabled = false;
+
+    }
     private void DrawDebugBox(Vector3 center)
     {
         float halfWidth = _damageBox.x * 0.5f;

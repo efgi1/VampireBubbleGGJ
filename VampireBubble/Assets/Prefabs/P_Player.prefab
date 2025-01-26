@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8466181106640295140}
   m_Layer: 0
   m_Name: EnemyCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -205,6 +205,22 @@ MonoBehaviour:
   _damageColor: {r: 1, g: 0.3584906, b: 0.3584906, a: 1}
   _heroDataSO: {fileID: 11400000, guid: a136d54b323dbd948bccba11140e9b11, type: 2}
   _currentHealth: 0
+  _experienceToNextLevel: 10
+  OnExperienceNeededChange:
+    m_PersistentCalls:
+      m_Calls: []
+  _experience: 0
+  OnExperienceChange:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLevelUp:
+    m_PersistentCalls:
+      m_Calls: []
+  _levelUpSounds:
+  - {fileID: 8300000, guid: 4908acbb8a620464aa4e66473465092b, type: 3}
+  - {fileID: 8300000, guid: 51a2271959af73c4cbe42061e6aa4a93, type: 3}
+  - {fileID: 8300000, guid: b46e391e68649c14695193fe8c59e23a, type: 3}
+  - {fileID: 8300000, guid: 5c5e5a75083f83e4dbf40d2fbfd789be, type: 3}
   _damageSounds:
   - {fileID: 8300000, guid: bbb179392ce1b4b488525c6eaca005a4, type: 3}
   - {fileID: 8300000, guid: 428b1381fe7030743b9557fbf80621f6, type: 3}

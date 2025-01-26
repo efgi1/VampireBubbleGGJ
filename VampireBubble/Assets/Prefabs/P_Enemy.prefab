@@ -161,6 +161,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 20459c73d5954644cbde925ab9476466, type: 3}
   - {fileID: 8300000, guid: b56d3697f7bc7a64fba715f1c4e61b98, type: 3}
   - {fileID: 8300000, guid: 9621f98950de4204d9249ac9dcc99f29, type: 3}
+  _pickupOptions:
+  - {fileID: 11400000, guid: 306a3f5ce97297142bf53d29da04db3d, type: 2}
+  - {fileID: 11400000, guid: 87e2b85fbde03334186050c91ff8d75d, type: 2}
+  - {fileID: 11400000, guid: 9ac3ee2121605634db2eb7905281a09e, type: 2}
+  - {fileID: 11400000, guid: 4d1a676447cfd9f4d9ce23db41ef60b6, type: 2}
+  - {fileID: 11400000, guid: d6016dfaed3b23045a05681e3142eb5d, type: 2}
+  - {fileID: 11400000, guid: 0794313b8dc4fa04eab44bb59788c00e, type: 2}
+  _pickupPrefab: {fileID: 3566356364177948884, guid: aae50ebd322664849825fc262b8e2b5e, type: 3}
 --- !u!95 &1160570526980039920
 Animator:
   serializedVersion: 7
