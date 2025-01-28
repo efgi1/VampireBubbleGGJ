@@ -2532,6 +2532,14 @@ PrefabInstance:
       value: 4294909577
       objectReference: {fileID: 0}
     - target: {fileID: 6007628136921322490, guid: 0074161e070dc404cb49df3922efd616, type: 3}
+      propertyPath: m_text
+      value: BUBBLE BLIGHT
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007628136921322490, guid: 0074161e070dc404cb49df3922efd616, type: 3}
+      propertyPath: m_fontSize
+      value: 25.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007628136921322490, guid: 0074161e070dc404cb49df3922efd616, type: 3}
       propertyPath: m_fontColor.g
       value: 0.11764706
       objectReference: {fileID: 0}
@@ -2540,12 +2548,24 @@ PrefabInstance:
       value: 0.5372549
       objectReference: {fileID: 0}
     - target: {fileID: 6007628136921322490, guid: 0074161e070dc404cb49df3922efd616, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+    - target: {fileID: 6007628136921322490, guid: 0074161e070dc404cb49df3922efd616, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294909577
       objectReference: {fileID: 0}
+    - target: {fileID: 6007628136921322490, guid: 0074161e070dc404cb49df3922efd616, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
+    - target: {fileID: 6007628136921322490, guid: 0074161e070dc404cb49df3922efd616, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6069146037212682595, guid: 0074161e070dc404cb49df3922efd616, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6113686827902510157, guid: 0074161e070dc404cb49df3922efd616, type: 3}
       propertyPath: m_IsActive

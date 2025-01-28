@@ -15,4 +15,4 @@ MonoBehaviour:
   Sprite: {fileID: -974821224458873831, guid: 00c79e5ed5111e2469cb40bc9a1feab7, type: 3}
   Type: 3
   Value: 100
-  Chance: 0.025
+  Chance: 0.05
