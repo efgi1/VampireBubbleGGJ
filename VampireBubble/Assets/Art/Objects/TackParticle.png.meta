@@ -1,25 +1,10 @@
 fileFormatVersion: 2
-guid: 00c79e5ed5111e2469cb40bc9a1feab7
+guid: e64ca3b2e9e19674e9d48ed7e3dce328
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2567200848445385240
-    second: PickUps_Obstacles_Weapons_0
-  - first:
-      213: 8157373062170933784
-    second: PickUps_Obstacles_Weapons_1
-  - first:
-      213: -1451878839875631212
-    second: PickUps_Obstacles_Weapons_2
-  - first:
-      213: -974821224458873831
-    second: PickUps_Obstacles_Weapons_3
-  - first:
-      213: 4817274868929375268
-    second: PickUps_Obstacles_Weapons_4
-  - first:
-      213: -104489965615592108
-    second: PickUps_Obstacles_Weapons_5
+      213: 3635870286642860675
+    second: TackParticle_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -61,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 80
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -154,133 +139,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PickUps_Obstacles_Weapons_0
+      name: TackParticle_0
       rect:
         serializedVersion: 2
-        x: 80
-        y: 800
-        width: 80
-        height: 80
+        x: 5
+        y: 2
+        width: 41
+        height: 69
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 81a2baee19780a320800000000000000
-      internalID: 2567200848445385240
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PickUps_Obstacles_Weapons_1
-      rect:
-        serializedVersion: 2
-        x: 240
-        y: 800
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 81af907949fc43170800000000000000
-      internalID: 8157373062170933784
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PickUps_Obstacles_Weapons_2
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 800
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4978e4433e3e9dbe0800000000000000
-      internalID: -1451878839875631212
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PickUps_Obstacles_Weapons_3
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 800
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9141e9cd24db872f0800000000000000
-      internalID: -974821224458873831
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PickUps_Obstacles_Weapons_4
-      rect:
-        serializedVersion: 2
-        x: 720
-        y: 800
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 42ca3f368f56ad240800000000000000
-      internalID: 4817274868929375268
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PickUps_Obstacles_Weapons_5
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 640
-        width: 80
-        height: 80
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 45dc3ec0ee6cc8ef0800000000000000
-      internalID: -104489965615592108
+      spriteID: 382deb413c4357230800000000000000
+      internalID: 3635870286642860675
       vertices: []
       indices: 
       edges: []
@@ -289,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 80ab5e12b5ea79e41b35a2f89a7141c4
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -299,12 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      PickUps_Obstacles_Weapons_0: 2567200848445385240
-      PickUps_Obstacles_Weapons_1: 8157373062170933784
-      PickUps_Obstacles_Weapons_2: -1451878839875631212
-      PickUps_Obstacles_Weapons_3: -974821224458873831
-      PickUps_Obstacles_Weapons_4: 4817274868929375268
-      PickUps_Obstacles_Weapons_5: -104489965615592108
+      TackParticle_0: 3635870286642860675
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

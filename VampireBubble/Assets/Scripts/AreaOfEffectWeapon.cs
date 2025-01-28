@@ -6,7 +6,9 @@ public class AreaOfEffectWeapon : WeaponBase
 {
     [SerializeField] private AudioClip[] _attackSounds = Array.Empty<AudioClip>();
     private AudioSource _audioSource;
-    private SpriteRenderer _spriteRenderer;
+    [SerializeField] SpriteRenderer _spriteRenderer;
+    [SerializeField] private Animator _animator;
+    [SerializeField] private GameObject _attackEffect;
     private float _damage;
     private Vector2 _offsetFromPlayer;
     private Vector2 _damageBox;
@@ -19,9 +21,9 @@ public class AreaOfEffectWeapon : WeaponBase
     public override void Initialize(WeaponData weaponData)
     {
         _audioSource = GetComponent<AudioSource>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         _spriteRenderer.sprite = weaponData.Sprite;
-        _spriteRenderer.enabled = false;
+        _spriteRenderer.enabled = true;
         _damage = weaponData.Damage;
         _damageBox.y = weaponData.BoxHeight;
         _damageBox.x = weaponData.BoxWidth;
@@ -33,28 +35,27 @@ public class AreaOfEffectWeapon : WeaponBase
         SetupAttackTimer();
     }
 
+    private void Update()
+    {
+        if (!_nearestEnemy || _projectile)
+        {
+            Vector3 facingDir = GameManager.Instance.PlayerController.FacingDir();
+            _attackEffect.transform.localScale = facingDir.x > 0 ? new Vector3(1, 1, -1) : new Vector3(1, 1, 1);
+            
+            transform.rotation = facingDir.x > 0 ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
+        }
+    }
+
     protected override void Attack()
     {
-        
-        Vector3 facingDir = GameManager.Instance.PlayerController.FacingDir();
-        transform.localPosition = new Vector3(facingDir.x, 0, 0);
-        Vector3 areaBoxCenter = transform.position + facingDir * _damageBox.x * 0.5f - facingDir;
-        if (_nearestEnemy)
+
+        if (_animator != null)
         {
-            var enemy = EnemySpawner.Instance.GetNearestEnemy(GameManager.Instance.PlayerController.transform.position);
-            areaBoxCenter = enemy.transform.position;
-            transform.position = enemy.transform.position;
-        }
-       
-        StartCoroutine(ShowAttack());
-        if (_duration != 0)
-        {
-            _remainingAttackTime = _duration;
-            StartCoroutine(AttackHelper(areaBoxCenter));
+           _animator.Play(0);
         }
         else
         {
-            DealDamage(areaBoxCenter);
+            TryHit();
         }
 
 
@@ -71,8 +72,33 @@ public class AreaOfEffectWeapon : WeaponBase
 
     }
 
+    public void TryHit()
+    {
+        Vector3 facingDir = GameManager.Instance.PlayerController.FacingDir();
+        var playerPos = GameManager.Instance.PlayerController.transform.position;
+        Vector3 areaBoxCenter = playerPos + facingDir * _damageBox.x * 0.5f;
+        if (_nearestEnemy)
+        {
+            var enemy = EnemySpawner.Instance.GetNearestEnemy(GameManager.Instance.PlayerController.transform.position);
+            areaBoxCenter = enemy.transform.position;
+            transform.position = enemy.transform.position;
+        }
+       
+        //StartCoroutine(ShowAttack());
+        if (_duration != 0)
+        {
+            _remainingAttackTime = _duration;
+            StartCoroutine(AttackHelper(areaBoxCenter));
+        }
+        else
+        {
+            DealDamage(areaBoxCenter);
+        }
+    }
+
     private void DealDamage(Vector3 areaBoxCenter)
     {
+        StartCoroutine(ShowDamageEffect());
         var colliders = Physics2D.OverlapBoxAll(areaBoxCenter, _damageBox, 0);
         DrawDebugBox(areaBoxCenter);
         foreach (var collider in colliders)
@@ -89,14 +115,16 @@ public class AreaOfEffectWeapon : WeaponBase
         }
     }
 
-    private IEnumerator ShowAttack()
+    private IEnumerator ShowDamageEffect()
     {
-        _spriteRenderer.enabled = true;
-        var timeToShow = _duration > 0 ? _duration : 0.25f;
-        yield return new WaitForSeconds(timeToShow);
-        _spriteRenderer.enabled = false;
-
+        if (_attackEffect != null)
+        {
+            _attackEffect.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            _attackEffect.SetActive(false);
+        }
     }
+
     private void DrawDebugBox(Vector3 center)
     {
         float halfWidth = _damageBox.x * 0.5f;
@@ -106,9 +134,9 @@ public class AreaOfEffectWeapon : WeaponBase
         Vector3 bottomLeft = center + new Vector3(-halfWidth, -halfHeight, 0);
         Vector3 bottomRight = center + new Vector3(halfWidth, -halfHeight, 0);
 
-        Debug.DrawLine(topLeft, topRight, Color.yellow, _debugDisplayTime);
-        Debug.DrawLine(topRight, bottomRight, Color.yellow,  _debugDisplayTime);
-        Debug.DrawLine(bottomRight, bottomLeft, Color.yellow,  _debugDisplayTime);
-        Debug.DrawLine(bottomLeft, topLeft, Color.yellow,  _debugDisplayTime);
+        Debug.DrawLine(topLeft, topRight, Color.black, _debugDisplayTime);
+        Debug.DrawLine(topRight, bottomRight, Color.black,  _debugDisplayTime);
+        Debug.DrawLine(bottomRight, bottomLeft, Color.black,  _debugDisplayTime);
+        Debug.DrawLine(bottomLeft, topLeft, Color.black,  _debugDisplayTime);
     }
 }

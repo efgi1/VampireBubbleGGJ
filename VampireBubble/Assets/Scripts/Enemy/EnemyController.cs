@@ -37,6 +37,7 @@ public class EnemyController : MonoBehaviour
     public void Initialize(EnemyData data, Vector3 randomPosition)
     {
         _collider2D.enabled = true;
+        _spriteRenderer.enabled = true;
         transform.position = randomPosition;
         _speed = data.Speed;
         SetFlying(data.Flying);
@@ -63,6 +64,7 @@ public class EnemyController : MonoBehaviour
     IEnumerator Die()
     {
         _collider2D.enabled = false;
+        _spriteRenderer.enabled = false;
         GameManager.Instance.EnemiesKilled++;
         OnDeath?.Invoke();
         PlayDeathSound();

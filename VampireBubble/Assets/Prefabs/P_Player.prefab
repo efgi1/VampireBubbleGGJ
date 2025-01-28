@@ -290,7 +290,9 @@ MonoBehaviour:
   Animator: {fileID: 0}
   _weaponData:
   - {fileID: 11400000, guid: 2c55f57691bbda147a3dee1769806e81, type: 2}
-  WeaponPrefab: {fileID: 1694815579958940113, guid: 4232e25e644ffd044b020b795d8a2f2b, type: 3}
+  _weapons: []
+  ClubWeaponPrefab: {fileID: 1694815579958940113, guid: 4232e25e644ffd044b020b795d8a2f2b, type: 3}
+  TackWeaponPrefab: {fileID: 0}
   _shieldObject: {fileID: 2835094895016283487}
   _colorChangeSpeed: 0.05
   _damageColor: {r: 1, g: 0.3584906, b: 0.3584906, a: 1}

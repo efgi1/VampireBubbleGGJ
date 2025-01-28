@@ -14,8 +14,9 @@ public class PlayerController : MonoBehaviour
     public Animator Animator;
     // Weapons
     [SerializeField] private WeaponData[] _weaponData;
-    private List<WeaponBase> _weapons = new List<WeaponBase>();
-    public GameObject WeaponPrefab;
+    [SerializeField] private List<WeaponBase> _weapons = new List<WeaponBase>();
+    public GameObject ClubWeaponPrefab;
+    public GameObject TackWeaponPrefab;
 
     [SerializeField] private GameObject _shieldObject;
     private float shieldTime = 0;
@@ -96,8 +97,8 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        GameObject newWeaponObject = Instantiate(WeaponPrefab, transform);
-        WeaponBase newWeapon = newWeaponObject.AddComponent<AreaOfEffectWeapon>();
+        GameObject newWeaponObject = Instantiate(ClubWeaponPrefab, transform);
+        WeaponBase newWeapon = newWeaponObject.GetComponent<AreaOfEffectWeapon>();
         newWeapon.Initialize(_weaponData[0]);
         _weapons.Add(newWeapon);
 
@@ -187,8 +188,8 @@ public class PlayerController : MonoBehaviour
             case PickupType.NailUpgrade:
                 if (_weapons.Count < 2)
                 {
-                    GameObject newWeaponObject = Instantiate(WeaponPrefab);
-                    WeaponBase newWeapon = newWeaponObject.AddComponent<AreaOfEffectWeapon>();
+                    GameObject newWeaponObject = Instantiate(TackWeaponPrefab);
+                    WeaponBase newWeapon = newWeaponObject.GetComponent<AreaOfEffectWeapon>();
                     newWeapon.Initialize(_weaponData[1]);
                     _weapons.Add(newWeapon);
                 }
